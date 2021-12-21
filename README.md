@@ -44,6 +44,36 @@ local tempn = round(_b[foreign],0.02)
 send_est using "foreign_b.tex", local(`tempn')
 ```
 
+Output:
+
+```stata
+. sysuse auto, clear
+(1978 Automobile Data)
+
+. reg price foreign
+
+      Source |       SS           df       MS      Number of obs   =        74
+-------------+----------------------------------   F(1, 72)        =      0.17
+       Model |  1507382.66         1  1507382.66   Prob > F        =    0.6802
+    Residual |   633558013        72  8799416.85   R-squared       =    0.0024
+-------------+----------------------------------   Adj R-squared   =   -0.0115
+       Total |   635065396        73  8699525.97   Root MSE        =    2966.4
+
+------------------------------------------------------------------------------
+       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     foreign |   312.2587   754.4488     0.41   0.680    -1191.708    1816.225
+       _cons |   6072.423    411.363    14.76   0.000     5252.386     6892.46
+------------------------------------------------------------------------------
+
+. local tempn = round(_b[foreign],0.02)
+
+. send_est using "foreign_b.tex", local(`tempn')
+(note: file foreign_b.tex not found)
+Exported value: 312.26
+Estimates saved to: foreign_b.tex 
+```
+
 ## Author
 
 In case you would like to contact me, you can email me at: [rodriguezramirez@worldbank.org](mailto:rodriguezramirez@worldbank.org)
