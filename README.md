@@ -3,7 +3,7 @@
 
 ## Description
 
-`send_est` is a command that send estimates to either LaTeX or any other file binary file using Stata's `file` command.
+`send_est` is a command that send estimates to either LaTeX or any other file binary file using Stata's `file` command. You need to save the estimate in a local and then export it using the `send_est` command.
 
 ## Install
 
@@ -16,7 +16,7 @@ net install send_est, from("https://raw.githubusercontent.com/rrmaximiliano/send
 The syntax is as follows:
 
 ```stata
-send_est using "file_to_be_exported.tex", local(estimate)
+send_est using "estimate.tex", local(estimate)
 ```
 
 ### Example
@@ -28,7 +28,7 @@ count if foreign == 1
 send_est using "foreign_N.tex", local(`r(N')
 ```
 
-After you have exported your estimate to, for example, LaTeX you can include in your manuscript using the `input' command.
+After you have exported your estimate to, for example, LaTeX you can include your estimate in your manuscript using the `input` command.
 
 ```tex
 The total number of foreign cars is \input{foreign_N.tex}\unskip.
