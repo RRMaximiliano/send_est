@@ -34,6 +34,16 @@ After you have exported your estimate to, for example, LaTeX you can include in 
 The total number of foreign cars is \input{foreign_N.tex}\unskip.
 ```
 
+### Coefficients
+
+```stata
+sysuse auto, clear
+
+reg price foreign
+local tempn = round(_b[foreign],0.02)
+send_est using "foreign_b.tex", local(`tempn')
+```
+
 ## Author
 
 In case you would like to contact me, you can email me at: [rodriguezramirez@worldbank.org](mailto:rodriguezramirez@worldbank.org)
